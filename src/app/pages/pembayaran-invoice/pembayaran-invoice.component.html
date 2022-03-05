@@ -1,0 +1,94 @@
+<app-mol-card-layout [BackUrl]="'beranda'">
+    <!-- Title dan Button Filter -->
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mb-3 ps-1">
+        <p class="text-abu-tua mb-0">List Invoice Belum Terbayar
+            <span class="float-end text-biru-tua cursor-pointer" data-bs-toggle="offcanvas"
+                data-bs-target="#offcanvasFilterPencarian" aria-controls="offcanvasFilterPencarian">
+                <i class="fas fa-filter fa-sm"></i> Filter
+            </span>
+        </p>
+    </div>
+
+    <!-- List Invoice Belum Terbayar -->
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mb-3 px-0 cursor-pointer"
+        *ngFor="let item of InvoiceBelumLunas">
+        <div class="card border-left-biru-tua shadow-sm">
+            <div class="card-body ps-3 pe-0 py-0">
+                <div class="row">
+                    <div class="col-10 px-0 py-2">
+                        <h5 class="mb-1 text-biru-tua fw-bold">
+                            {{ item.nama_customer }}
+                        </h5>
+                        <p class="mb-1 text-kuning">
+                            {{ item.tanggal_tagihan | date: 'dd MMMM yyyy' }}
+                        </p>
+                        <p class="mb-0 text-abu">
+                            {{ item.subtotal | currency: 'Rp. ' }}
+                        </p>
+                    </div>
+                    <div class="col-2 px-0 bg-biru-tua btn-bayar-invoice text-center text-white"
+                        (click)="handleClickItemInvoice(item)">
+                        <div class="row h-100 align-items-center">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 px-0">
+                                <i class="fas fa-chevron-right"></i>
+                            </div>
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 px-0">
+                                Pay
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ** Offcanvas Filter Pencarian -->
+    <div class="offcanvas offcanvas-bottom" tabindex="-1" id="offcanvasFilterPencarian"
+        aria-labelledby="offcanvasFilterPencarianLabel">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="offcanvasFilterPencarianLabel">Filter Pencarian</h5>
+            <button id="btnCloseOffcanvas" type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"
+                aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body small">
+            <form [formGroup]="FormFilterPencarian">
+                <!-- Nama Customer -->
+                <div class="row mb-3">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <p class="filter_pencarian mb-1">
+                            Nama Customer
+                        </p>
+                        <ejs-dropdownlist #DropdownCustomer [dataSource]="setupCustomerService.DataCustomer | async"
+                            [fields]="DropdownCustomerField" [showClearButton]="true" [allowFiltering]="true"
+                            formControlName="id_customer">
+                        </ejs-dropdownlist>
+                    </div>
+                </div>
+
+                <!-- Bulan -->
+                <div class="row mb-4">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <p class="filter_pencarian mb-1">
+                            Bulan
+                        </p>
+                        <ejs-dropdownlist #DropdownBulan [dataSource]="DropdownBulanDatasource"
+                            [fields]="DropdownBulanField" [showClearButton]="true" [allowFiltering]="true"
+                            formControlName="id_bulan">
+                        </ejs-dropdownlist>
+                    </div>
+                </div>
+
+                <!-- Button Filter Pencarian -->
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 d-grid gap-2">
+                        <button class="btn btn-primary btn-sm" type="button"
+                            (click)="handleClickButtonFilterPencarian(FormFilterPencarian.value)">
+                            Cari
+                        </button>
+                    </div>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</app-mol-card-layout>

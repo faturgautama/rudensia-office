@@ -1,0 +1,13 @@
+<div class="container">
+    <div class="timeline">
+        <div class="timeline-row" *ngFor="let item of Timeline" data-aos="fade-up" data-aos-delay="200">
+            <div class="timeline-time text-kuning">
+                {{ item.time | date: 'yyyy' }}
+            </div>
+            <div class="timeline-content">
+                <h4>{{ item.title }}</h4>
+                <p>{{ item.sub_title }}</p>
+            </div>
+        </div>
+    </div>
+</div>

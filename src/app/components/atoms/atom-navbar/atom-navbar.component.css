@@ -1,0 +1,9 @@
+img.image_navbar_brand {
+  height: 2.5rem;
+}
+
+a.nav-link:hover {
+  font-weight: 500;
+  transition: transform 250ms, opacity 400ms;
+  transform: translateY(-5px);
+}

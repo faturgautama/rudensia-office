@@ -1,0 +1,9 @@
+#molCardLayoutSection {
+  height: 100vh;
+  max-height: 100vh;
+}
+
+.div-container {
+  height: calc(100vh - 9rem);
+  overflow-y: auto;
+}

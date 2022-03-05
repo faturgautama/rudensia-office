@@ -1,0 +1,10 @@
+#offcanvasDetailCustomer {
+  height: 24rem;
+  max-height: 24rem;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+}
+
+p.informasi_customer {
+  font-size: 15px;
+}

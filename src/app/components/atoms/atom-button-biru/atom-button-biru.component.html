@@ -1,0 +1,8 @@
+<div class="row mb-2">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 px-0 {{ IsButtonBlock ? 'd-grid gap-2' : ''}}">
+        <button [id]="ButtonBiruId" class="btn btn-biru" type="button" (click)="handleClickButtonBiru($event)"
+            [disabled]="DisablingButton">
+            {{ ButtonBiruCaption }}
+        </button>
+    </div>
+</div>

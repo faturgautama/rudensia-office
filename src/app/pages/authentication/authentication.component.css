@@ -1,0 +1,20 @@
+div#div_illustration_auth {
+  border-right: 1px solid #dee2e6 !important;
+  text-align: right;
+}
+
+img.img_authentication {
+  height: 20rem;
+}
+
+@media (max-width: 1199.98px) {
+  div#div_illustration_auth {
+    border-right: 0 !important;
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+
+  img.img_authentication {
+    height: 7.5rem;
+  }
+}

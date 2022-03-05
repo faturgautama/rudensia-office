@@ -1,0 +1,5 @@
+#list_customer {
+  height: calc(100vh - 220px);
+  max-height: calc(100vh - 220px);
+  overflow-y: auto;
+}

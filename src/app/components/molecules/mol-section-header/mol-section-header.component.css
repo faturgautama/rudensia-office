@@ -1,0 +1,7 @@
+section#mol_section_header {
+  height: 20rem;
+  max-height: 20rem;
+  background-image: url("../../../../assets/image/section_header.png");
+  background-position: center center;
+  background-repeat: no-repeat;
+}

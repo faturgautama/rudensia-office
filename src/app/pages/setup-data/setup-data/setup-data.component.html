@@ -1,0 +1,9 @@
+<app-mol-card-layout>
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="row">
+            <div *ngFor="let item of Menu" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mb-3">
+                <app-mol-card [CardCaption]="item.Caption" (click)="onClickCardMenu(item)"></app-mol-card>
+            </div>
+        </div>
+    </div>
+</app-mol-card-layout>

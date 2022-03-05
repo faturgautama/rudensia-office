@@ -1,0 +1,179 @@
+<div #printSection id="print-section">
+    <div class="div py-2 m-2">
+        <!-- Header -->
+        <div class="row align-items-center justify-content-end text-center mb-3">
+            <!-- Nama Perusahaan -->
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mb-1">
+                <p class="text-black mb-0 fw-bold" style="font-size: 14px">
+                    PT. RUDENSIA JAYARAYA
+                </p>
+            </div>
+
+            <!-- Alamat Perusahaan -->
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mb-1">
+                <p class="text-black mb-0" style="font-size: 12px">
+                    Jl. Kompol R Soekanto No.999
+                </p>
+            </div>
+
+            <!-- No. Telp Perusahaan -->
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mb-1">
+                <p class="text-black mb-0" style="font-size: 12px">
+                    (024) 764 13123
+                </p>
+            </div>
+
+            <!-- Email Perusahaan -->
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mb-1">
+                <p class="text-black mb-0" style="font-size: 12px">
+                    rudensia.jayaraya@gmail.com
+                </p>
+            </div>
+        </div>
+
+        <!-- Title -->
+        <div class="row mb-3">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 px-0">
+                <h5 class="text-black fw-bold text-center py-2 border-bottom border-top">
+                    Tagihan Customer
+                </h5>
+            </div>
+        </div>
+
+        <!-- Content -->
+        <div class="row mb-2 pb-2" style="border-bottom: 1px dashed #c6c9cc;">
+            <div class="col-4 px-0">
+                <!-- Nama Customer -->
+                <div class="row mb-2">
+                    <div class="col-12 px-0">
+                        <p class="text-black mb-0 fw-bold" style="font-size: 13px">Customer </p>
+                        <p class="text-black mb-0" style="font-size: 12px">
+                            {{ DataInvoice ? DataInvoice.nama_customer : '' }}
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Tanggal -->
+                <div class="row mb-1">
+                    <div class="col-12 px-0">
+                        <p class="text-black mb-0 fw-bold" style="font-size: 13px">Tanggal Invoice</p>
+                        <p class="text-black mb-0" style="font-size: 12px">
+                            {{ DataInvoice ? (DataInvoice.tanggal_tagihan | date: 'dd MMMM yyyy') : '' }}
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-4 px-0">
+                <!-- No. Kav -->
+                <div class="row mb-1">
+                    <div class="col-12 px-0">
+                        <p class="text-black mb-0 fw-bold" style="font-size: 13px">No. Kav</p>
+                        <p class="text-black mb-0" style="font-size: 12px">
+                            {{ DataInvoice ? DataInvoice.no_kavling : '' }}
+                        </p>
+                    </div>
+                </div>
+
+                <!-- No. Pelanggan -->
+                <div class="row mb-1">
+                    <div class="col-12 px-0">
+                        <p class="text-black mb-1 fw-bold" style="font-size: 12px">No. Pelanggan</p>
+                        <p class="text-black mb-0" style="font-size: 12px">
+                            {{ DataInvoice ? DataInvoice.no_pelanggan_customer : '' }}
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-4 px-0">
+                <!-- Pemakaian Awal -->
+                <div class="row mb-1">
+                    <div class="col-12 px-0">
+                        <p class="text-black mb-0 fw-bold" style="font-size: 13px">Pemakaian Awal</p>
+                        <p class="text-black mb-0" style="font-size: 12px">
+                            {{ DataInvoice ? DataInvoice.jumlah_pemakaian_awal : '' }}
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Pemakaian Akhir -->
+                <div class="row mb-1">
+                    <div class="col-12 px-0">
+                        <p class="text-black mb-1 fw-bold" style="font-size: 12px">Pemakaian Akhir</p>
+                        <p class="text-black mb-0" style="font-size: 12px">
+                            {{ DataInvoice ? DataInvoice.jumlah_pemakaian_akhir : ''}}
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Iuran Sampah -->
+        <div class="row justify-content-end mb-2">
+            <div class="col-4 px-0">
+                <p class="text-black mb-0 fw-bold" style="font-size: 13px">Iuran Sampah</p>
+            </div>
+            <div class="col-4 px-0">
+                <p class="text-black mb-0" style="font-size: 12px">
+                    {{ DataInvoice ? (DataInvoice.jumlah_iuran_sampah | currency: 'Rp. ') : '' }}
+                </p>
+
+            </div>
+        </div>
+
+        <!-- Subtotal -->
+        <div class="row justify-content-end mb-4 pb-2 border-bottom">
+            <div class="col-4 px-0">
+                <p class="text-black mb-0 fw-bold" style="font-size: 13px">Subtotal</p>
+            </div>
+            <div class="col-4 px-0">
+                <p class="text-black mb-0" style="font-size: 12px">
+                    {{ DataInvoice ? (DataInvoice.subtotal | currency: 'Rp. ') : '0' }}
+                </p>
+            </div>
+        </div>
+
+        <!-- Title Daftar Tunggakan -->
+        <div *ngIf="ShowTunggakan" class="row mb-3">
+            <div class="col-12 px-0 mb-3">
+                <h5 class="text-black fw-bold text-center py-2 border-bottom border-top">
+                    Tunggakan Customer
+                </h5>
+            </div>
+
+            <div class="col-12">
+                <table class="table table-striped" style="font-size: 12px;">
+                    <thead>
+                        <tr>
+                            <th scope="col" class="text-center">No.</th>
+                            <th scope="col" class="text-center">Tanggal</th>
+                            <th scope="col" class="text-center">P. Awal</th>
+                            <th scope="col" class="text-center">P. Akhir</th>
+                            <th scope="col" class="text-center">Total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let item of DataInvoice?.tunggakan; let index = index">
+                            <th scope="row">{{ index + 1 }}</th>
+                            <td>{{ item.tanggal_tagihan | date: 'dd/MM/yyyy' }}</td>
+                            <td class="text-end">{{ item.jumlah_pemakaian_awal }}</td>
+                            <td class="text-end">{{ item.jumlah_pemakaian_akhir }}</td>
+                            <td class="text-end">{{ item.subtotal | currency: 'Rp. '}}</td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td colspan="4" class="text-end">
+                                Subtotal Tunggakan
+                            </td>
+                            <td class="text-end">
+                                {{ SubtotalTunggakan | currency: 'Rp. ' }}
+                            </td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

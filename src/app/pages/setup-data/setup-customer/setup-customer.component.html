@@ -1,0 +1,92 @@
+<app-mol-card-layout [BackUrl]="'beranda'">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <!-- Tab Input -->
+            <li class="nav-item" role="presentation">
+                <button class="nav-link active" id="input_customer-tab" data-bs-toggle="tab"
+                    data-bs-target="#input_customer" type="button" role="tab" aria-controls="input_customer"
+                    aria-selected="true">
+                    Input
+                </button>
+            </li>
+
+            <!-- Tab List -->
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="list_customer-tab" data-bs-toggle="tab" data-bs-target="#list_customer"
+                    type="button" role="tab" aria-controls="list_customer" aria-selected="false">
+                    List
+                </button>
+            </li>
+        </ul>
+        <div class="tab-content" id="myTabContent">
+            <!-- Content Input -->
+            <div class="tab-pane fade show active" id="input_customer" role="tabpanel"
+                aria-labelledby="input_customer-tab">
+                <form [formGroup]="Form" class="mt-3">
+                    <!-- No. Pelanggan -->
+                    <div class="row mb-3">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 px-0">
+                            <label class="form-label" for="">No. Pelanggan</label>
+                            <input type="text" class="form-control" formControlName="no_pelanggan_customer">
+                        </div>
+                    </div>
+
+                    <!-- Nama Customer -->
+                    <div class="row mb-3">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 px-0">
+                            <label class="form-label" for="">Nama Customer</label>
+                            <input type="text" class="form-control" formControlName="nama_customer">
+                        </div>
+                    </div>
+
+                    <!-- No. Handphone -->
+                    <div class="row mb-3">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 px-0">
+                            <label class="form-label" for="">No. Handphone</label>
+                            <input type="text" class="form-control" formControlName="no_handphone">
+                        </div>
+                    </div>
+
+                    <!-- No. Handphone -->
+                    <div class="row mb-3">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 px-0">
+                            <label class="form-label" for="">No. Kavling</label>
+                            <input type="text" class="form-control" formControlName="no_kavling">
+                        </div>
+                    </div>
+
+                    <!-- No. Handphone -->
+                    <app-atom-button-biru [ButtonBiruId]="'btnSimpan'" [ButtonBiruCaption]="'Simpan Data Customer'"
+                        (HandlingClickButtonBiru)="onSubmitDataCustomer(Form.value)">
+                    </app-atom-button-biru>
+                </form>
+            </div>
+
+            <!-- Content List -->
+            <div class="tab-pane fade" id="list_customer" role="tabpanel" aria-labelledby="list_customer-tab">
+                <div class="row mt-3">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mb-2 px-0"
+                        *ngFor="let customer of setupCustomerService.DataCustomer | async">
+                        <div class="card border-left-biru-tua shadow-sm">
+                            <div class="card-body px-3 py-2">
+                                <h5 class="mb-1 text-biru-tua fw-bold">
+                                    {{ customer.nama_customer }}
+                                    <span class="float-end mb-0 badge bg-warning text-white cursor-pointer"
+                                        (click)="onDeleteCustomer(customer)">
+                                        <i class="fas fa-trash-alt fa-sm"></i>
+                                    </span>
+                                </h5>
+                                <p class="mb-1 text-kuning">
+                                    {{ customer.no_pelanggan_customer }}
+                                </p>
+                                <p class="mb-0 text-abu">
+                                    Kav. {{ customer.no_kavling }}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</app-mol-card-layout>

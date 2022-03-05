@@ -1,0 +1,122 @@
+<app-mol-card-layout [BackUrl]="'beranda'">
+    <form [formGroup]="FormInvoiceAir">
+        <!-- Customer -->
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mb-3">
+            <label for="" class="form-label mb-1">Pilih Customer</label>
+            <div class="row">
+                <div class="col-10 ps-0 pe-2">
+                    <ejs-dropdownlist #DropdownCustomer [dataSource]="setupCustomerService.DataCustomer | async"
+                        [fields]="DropdownCustomerField" (change)="onChangeDropdownCustomer($event)"
+                        [allowFiltering]="true" formControlName="id_customer">
+                    </ejs-dropdownlist>
+                </div>
+                <div class="col-2 px-0">
+                    <button class="btn btn-primary btn-sm" type="button" data-bs-toggle="offcanvas"
+                        data-bs-target="#offcanvasDetailCustomer" aria-controls="offcanvasDetailCustomer">
+                        Detail
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bulan -->
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mb-3">
+            <label for="" class="form-label mb-1">Tanggal Tagihan</label>
+            <ejs-datepicker [format]="'dd/MM/yyyy'" formControlName="tanggal_tagihan"></ejs-datepicker>
+        </div>
+
+        <!-- Jumlah Pemakaian Air Awal -->
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mb-3">
+            <label for="" class="form-label mb-1">Jumlah Pemakaian Air Awal</label>
+            <ejs-numerictextbox #JumlahPemakaianAwal [min]="0" [format]="'N2'" [showSpinButton]="false"
+                [showClearButton]="true" style="text-align: right; padding-right: 5px;"
+                formControlName="jumlah_pemakaian_awal" (change)="handleChangePemakaianAwal(JumlahPemakaianAwal.value)">
+            </ejs-numerictextbox>
+        </div>
+
+        <!-- Jumlah Pemakaian Air Awal -->
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mb-3">
+            <label for="" class="form-label mb-1">Jumlah Pemakaian Air Akhir</label>
+            <ejs-numerictextbox #JumlahPemakaianAkhir [min]="0" [format]="'N2'" [showSpinButton]="false"
+                [showClearButton]="true" style="text-align: right; padding-right: 5px;"
+                formControlName="jumlah_pemakaian_akhir"
+                (change)="handleChangePemakaianAkhir(JumlahPemakaianAkhir.value)">
+            </ejs-numerictextbox>
+        </div>
+
+        <!-- Tagihan Iuran Sampah -->
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mb-3">
+            <label for="" class="form-label mb-1">Tagihan Iuran Sampah</label>
+            <ejs-numerictextbox #TagihanIuranSampah [min]="0" [format]="'N2'" [showSpinButton]="false" [enabled]="false"
+                [showClearButton]="true" style="text-align: right; padding-right: 5px;"
+                formControlName="jumlah_iuran_sampah">
+            </ejs-numerictextbox>
+        </div>
+
+        <!-- Subtotal Tagihan -->
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mb-4">
+            <label for="" class="form-label mb-1">Subtotal Tagihan</label>
+            <ejs-numerictextbox #SubtotalTagihan [min]="0" [format]="'N2'" [showSpinButton]="false" [enabled]="false"
+                [showClearButton]="true" style="text-align: right; padding-right: 5px;" formControlName="subtotal">
+            </ejs-numerictextbox>
+        </div>
+
+        <!-- Simpan Invoice -->
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mb-2 d-grid gap-2">
+            <button class="btn btn-primary btn-sm" type="button"
+                (click)="handleSubmitFormInvoice(FormInvoiceAir.value)">
+                Simpan Invoice
+            </button>
+        </div>
+    </form>
+
+    <!-- ** Offcanvas Detail Customer -->
+    <div class="offcanvas offcanvas-bottom" tabindex="-1" id="offcanvasDetailCustomer"
+        aria-labelledby="offcanvasDetailCustomerLabel">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="offcanvasDetailCustomerLabel">Detail Customer</h5>
+            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body small">
+            <!-- Nama Customer -->
+            <div class="row mb-3">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mb-0">
+                    <p class="text-abu mb-1">Nama Customer</p>
+                    <p class="text-biru-tua mb-0 fw-bold informasi_customer">
+                        {{ SelectedCustomer ? SelectedCustomer.nama_customer : ''}}
+                    </p>
+                </div>
+            </div>
+
+            <!-- No. Handphone -->
+            <div class="row mb-3">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mb-0">
+                    <p class="text-abu mb-1">No. Handphone</p>
+                    <p class="text-biru-tua mb-0 fw-bold informasi_customer">
+                        {{ SelectedCustomer ? SelectedCustomer.no_handphone : ''}}
+                    </p>
+                </div>
+            </div>
+
+            <!-- No. Pelanggan -->
+            <div class="row mb-3">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mb-0">
+                    <p class="text-abu mb-1">No. Pelanggan</p>
+                    <p class="text-biru-tua mb-0 fw-bold informasi_customer">
+                        {{ SelectedCustomer ? SelectedCustomer.no_pelanggan_customer : ''}}
+                    </p>
+                </div>
+            </div>
+
+            <!-- No. Kavling -->
+            <div class="row mb-0">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mb-0">
+                    <p class="text-abu mb-1">No. Kavling</p>
+                    <p class="text-biru-tua mb-0 fw-bold informasi_customer">
+                        {{ SelectedCustomer ? SelectedCustomer.no_kavling : ''}}
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</app-mol-card-layout>

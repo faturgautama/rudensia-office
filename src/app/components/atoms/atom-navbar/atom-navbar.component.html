@@ -1,0 +1,37 @@
+<nav class="navbar navbar-expand-lg fixed-top navbar-light bg-white shadow-sm vw-100 px-3">
+    <div class="container">
+        <a class="navbar-brand" [routerLink]="'/beranda'">
+            <h4 class="text-biru-tua mb-0 fw-bold">BACK OFFICE</h4>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
+            aria-controls="offcanvasNavbar">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+            <div class="offcanvas-header">
+                <h5 class="offcanvas-title" id="offcanvasNavbarLabel">BACK OFFICE</h5>
+                <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close">
+                </button>
+            </div>
+            <div class="offcanvas-body">
+                <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                    <li class="nav-item mx-2">
+                        <a class="nav-link text-biru-tua font-weight-400" [routerLink]="'/beranda'">Beranda</a>
+                    </li>
+                    <li class="nav-item mx-2">
+                        <a class="nav-link text-biru-tua font-weight-400" [routerLink]="'/beranda'">Setup Data</a>
+                    </li>
+                    <li class="nav-item mx-2">
+                        <a class="nav-link text-biru-tua font-weight-400" [routerLink]="'/beranda'">Invoice</a>
+                    </li>
+                </ul>
+                <span class="navbar-text px-2">
+                    Fatur Gautama S
+                </span>
+                <button class="btn btn-contact-us btn-sm shadow-sm border-0" type="button" (click)="onSignOut()">
+                    Sign Out
+                </button>
+            </div>
+        </div>
+    </div>
+</nav>

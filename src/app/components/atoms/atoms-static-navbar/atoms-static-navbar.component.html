@@ -1,0 +1,27 @@
+<div *ngIf="!HideNavbar" id="static_navbar" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mb-5">
+    <div class="row align-items-center align-content-center">
+        <div *ngIf="!HideBackButton" class="col-9 cursor-pointer" (click)="onNavigationBack()">
+            <h5 class="text-biru-tua mb-0">
+                <i class="fas fa-chevron-left fa-sm"></i>&nbsp; {{ Title }}
+            </h5>
+        </div>
+        <div class="{{ !HideBackButton ? 'col-3' : 'col-12'}} text-end cursor-pointer">
+            <div (click)="onTogglingDropdownUser()">
+                <img src="../../../../assets/image/user.png" alt="user" class="icon_user">&nbsp;
+                <i class="fas fa-chevron-down fa-xs text-biru-tua"></i>
+            </div>
+
+            <div id="dropdown_user" class="hide_dropdown_user">
+                <div class="card-body px-2 py-1" (click)="onSignOut()">
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <p class="text-white mb-0">
+                                <i class="fas fa-sign-out-alt fa-sm"></i> Sign Out
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

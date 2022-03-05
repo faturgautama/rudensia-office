@@ -1,0 +1,20 @@
+<section id="molCardLayoutSection" data-aos="fade-right">
+    <div class="container h-100 px-0">
+        <div class="row h-100">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 px-0">
+                <div class="card border-0 shadow h-100">
+                    <div class="card-body h-100 px-0">
+                        <div class="row py-3">
+                            <app-atoms-static-navbar [BackUrl]="BackUrl"></app-atoms-static-navbar>
+
+                            <div
+                                class="col-lg-12 col-md-12 col-sm-12 col-xs-12 px-4 {{ router.url == '/' ? 'div-container-auth' : 'div-container' }}">
+                                <ng-content></ng-content>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

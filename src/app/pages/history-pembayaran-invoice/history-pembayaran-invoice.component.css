@@ -1,0 +1,15 @@
+#offcanvasFilterPencarian {
+  height: 24rem;
+  max-height: 24rem;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+}
+
+p.filter_pencarian {
+  font-size: 15px;
+}
+
+.btn-bayar-invoice {
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+}

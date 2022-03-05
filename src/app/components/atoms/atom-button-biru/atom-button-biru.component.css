@@ -1,0 +1,5 @@
+button.btn-biru {
+  background: var(--biru-muda) !important;
+  color: white !important;
+  border-radius: 5px !important;
+}
